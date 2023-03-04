@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+<h1 class="title">Django Weather Application</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="selected_city" placeholder="Current City">
+    <input type="text" name="compared_city" placeholder="Compared City">
+    <button type="submit">Compare Weather</button>
+</form>
+
+<div class="comp_container">
+    {% if selected_city_weather %}
+    <div class="city_container">
+        {% include 'app/weather.html' with weather_data=selected_city_weather %}
+    </div>
+    {% endif %}
+    {% if compared_city_weather %}
+    <div class="city_container">
+        {% include 'app/weather.html' with weather_data=compared_city_weather %}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>

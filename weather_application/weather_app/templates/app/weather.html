@@ -1,0 +1,6 @@
+{% if weather_data %}
+    <h1>{{ weather_data.city }}</h1>
+    <h2>{{ weather_data.temp }}°C</h2>
+    <p>{{ weather_data.description }}</p>
+    <img src="{{ weather_data.icon_url }}" alt="Weather Icon">
+{% endif %}
